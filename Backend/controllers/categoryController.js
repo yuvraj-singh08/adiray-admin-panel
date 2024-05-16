@@ -124,9 +124,13 @@ const updateCategory = async (req, res) => {
         if (!category) {
             return res.status(404).json({ message: "Category not found.", success: false });
         }
-        category.name = name;
-        category.imageUrl = imageUrl;
-        category.products = products;
+        if (name)
+            category.name = name;
+        if (imageUrl)
+            category.imageUrl = imageUrl;
+        if (products)
+            category.products = products;
+
         const savedCategory = await category.save();
         res.status(200).json({ ...savedCategory, success: true });
     } catch (err) {
