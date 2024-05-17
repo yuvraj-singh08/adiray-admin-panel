@@ -13,7 +13,6 @@ const createCategory = async (req, res) => {
             products: []
             // subCategory: []
         });
-
         const savedCategory = await newCategory.save();
         res.status(201).json({ ...savedCategory, success: true });
     } catch (err) {
@@ -158,6 +157,37 @@ const updateProduct = async (req, res) => {
     }
 }
 
+const deleteCategory = async (req, res) => {
+    try {
+        const { categoryId } = req.params;
+        const result = await Category.deleteOne({ _id: categoryId });
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ message: "Category not found.", success: false });
+        }
+        res.status(200).json({ message: "Category deleted successfully.", success: true });
+    } catch (err) {
+        res.status(500).json({ error: err.message, success: false });
+    }
+}
+
+const deleteProduct = async (req, res) => {
+    try {
+        const { categoryId, productId } = req.params;
+        const category = await Category.findById(categoryId);
+        if (!category) {
+            return res.status(404).json({ message: "Category not found.", success: false });
+        }
+        const productIndex = category.products.findIndex(product => product._id.toString() === productId);
+        if (productIndex === -1) {
+            return res.status(404).json({ message: "Product not found.", success: false });
+        }
+        category.products.splice(productIndex, 1);
+        await category.save();
+        res.status(200).json({ message: "Product deleted successfully.", success: true });
+    } catch (err) {
+        res.status(500).json({ error: err.message, success: false });
+    }
+}
 
 
-module.exports = { updateProduct, createCategory, createSubCategory, addProduct, getCategoryList, getSubCategoryList, getCategoryData, updateCategory };
+module.exports = { deleteCategory, deleteProduct, updateProduct, createCategory, createSubCategory, addProduct, getCategoryList, getSubCategoryList, getCategoryData, updateCategory };

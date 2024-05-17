@@ -23,14 +23,12 @@ const adminAuth = async (req, res, next) => {
 
     jwt.verify(token, process.env.SECRET_KEY, (err, dec) => {
         decoded = { ...dec };
-        // console.log('decoded', decoded);
         if (err) {
             return next(err);
         }
     });
 
     const user = await Admin.findById(decoded.id);
-    // console.log('user', user);
 
     if (!user) {
         return next(new AppError("The user does not exist", 401));
