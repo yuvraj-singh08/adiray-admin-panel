@@ -71,7 +71,7 @@ export default function AddCategory({ refresh, token, setVisible }: AddCategoryP
             console.log(data);
         }
         else {
-            setErrorMessage(data.error);
+            setErrorMessage(data.message);
             setError(true);
         }
     }
@@ -99,9 +99,9 @@ export default function AddCategory({ refresh, token, setVisible }: AddCategoryP
                             <button onClick={addField} type="button" className="hover:bg-gray-200 my-2 w-full px-6 py-5 rounded-full mb-4 bg-gray-100">Add Field</button>
                             {/* <input className="focus:bg-white my-2 w-full px-6 py-5 rounded-full mb-4 bg-gray-100" type="text" placeholder="Image Url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} /> */}
 
-                            {/* <div className={` ${error ? '' : 'hidden'} mb-4 ml-1 mt-1 text-red-600`}>
+                            <div className={` ${error ? '' : 'hidden'} mb-4 ml-1 mt-1 text-red-600`}>
                                 <span className="text-white bg-red-600 rounded-full px-2">!</span> {errorMessage}
-                            </div> */}
+                            </div>
                             <div className="flex justify-between">
                                 <CustomButton type="button" varient="secondary" onClick={() => setVisible(false)}>Cancel</CustomButton>
                                 <CustomButton type="submit" varient="primary">Create</CustomButton>

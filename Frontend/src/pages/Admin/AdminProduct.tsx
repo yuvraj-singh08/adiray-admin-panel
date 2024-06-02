@@ -26,55 +26,6 @@ export default function AdminProduct(): JSX.Element {
     const inputClasses = "pl-10 pr-4 w-[100%] py-3 shadow-md text-md  rounded-lg";
     const isSmallScreen = useMediaQuery({ query: '(max-width: 700px)' });
 
-    const categories1 = [
-        { id: 1, name: "Product 1" },
-        { id: 2, name: "Product 2" },
-        { id: 3, name: "Product 3" },
-        { id: 4, name: "Product 4" },
-        { id: 5, name: "Product 5" },
-        { id: 6, name: "Product 6" },
-        { id: 7, name: "Product 7" },
-        { id: 8, name: "Product 8" },
-        { id: 9, name: "Product 9" },
-        { id: 10, name: "Product 10" },
-    ];
-    const categories2 = [
-        { id: 1, name: "Product 1" },
-        { id: 2, name: "Product 2" },
-        { id: 3, name: "Product 3" },
-        { id: 4, name: "Product 4" },
-        { id: 5, name: "Product 5" },
-        { id: 6, name: "Product 6" },
-        { id: 7, name: "Product 7" },
-        { id: 8, name: "Product 8" },
-        { id: 9, name: "Product 9" },
-        { id: 10, name: "Product 10" },
-    ];
-    const categories3 = [
-        { id: 1, name: "Product 1" },
-        { id: 2, name: "Product 2" },
-        { id: 3, name: "Product 3" },
-        { id: 4, name: "Product 4" },
-        { id: 5, name: "Product 5" },
-        { id: 6, name: "Product 6" },
-        { id: 7, name: "Product 7" },
-        { id: 8, name: "Product 8" },
-        { id: 9, name: "Product 9" },
-        { id: 10, name: "Product 10" },
-    ];
-    const categories4 = [
-        { id: 1, name: "Product 1" },
-        { id: 2, name: "Product 2" },
-        { id: 3, name: "Product 3" },
-        { id: 4, name: "Product 4" },
-        { id: 5, name: "Product 5" },
-        { id: 6, name: "Product 6" },
-        { id: 7, name: "Product 7" },
-        { id: 8, name: "Product 8" },
-        { id: 9, name: "Product 9" },
-        { id: 10, name: "Product 10" },
-    ];
-
     const [data, setData] = useState<Category | undefined>();
     const [name, setName] = useState('');
     const [imageUrl, setImageUrl] = useState('');
@@ -87,7 +38,6 @@ export default function AdminProduct(): JSX.Element {
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
 
-    const [category, setCategory] = useState(categories1);
 
     if (!token) {
         window.location.href = '/admin/login';
